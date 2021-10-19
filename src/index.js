@@ -40,7 +40,7 @@ btn.addEventListener('click',(event)=>{
         _path = _path + msg;
         _path = _path.replace(msgPlace,textMessge);
     }
-    if (phoneNumber == '' || paisCode == '') return;
+    if (phoneNumber == '' || paisCode == '' || zone == '') return;
     numero += paisCode + zone + phoneNumber;
     window.open(_path.replace(phone,numero));
 });
