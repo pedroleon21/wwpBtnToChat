@@ -15,8 +15,10 @@ messege.value = '';
 
 btn.addEventListener('click',(event)=>{
     alert.innerHTML = '';
+    let _path = path;
     let numero = '+';
     let paisCode = ddi.value;
+    let zone = zoneCode.value;
     let textMessge = messege.value;
     let phoneNumber =num.value;
     if (phoneNumber == '') {
@@ -30,7 +32,11 @@ btn.addEventListener('click',(event)=>{
         el.innerText =' fill country code';
         alert.appendChild(el);
     }
+    if(textMessge != ''){
+        _path = _path + msg;
+        _path = _path.replace(msgPlace,textMessge);
+    }
     if (phoneNumber == '' || paisCode == '') return;
-    numero += paisCode + phoneNumber;
-    window.open(path.replace(phone,numero));
+    numero += paisCode + zone + phoneNumber;
+    window.open(_path.replace(phone,numero));
 });
