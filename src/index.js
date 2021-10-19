@@ -28,8 +28,12 @@ btn.addEventListener('click',(event)=>{
     }
     if(paisCode == ''){
         let el = document.createElement('p');
-        console.log('aqui');
         el.innerText =' fill country code';
+        alert.appendChild(el);
+    }
+    if(zone == ''){
+        let el = document.createElement('p');
+        el.innerText =' fill zone code';
         alert.appendChild(el);
     }
     if(textMessge != ''){
