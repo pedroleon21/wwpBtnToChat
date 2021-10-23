@@ -44,3 +44,10 @@ btn.addEventListener('click',(event)=>{
     numero += paisCode + zone + phoneNumber;
     window.open(_path.replace(phone,numero));
 });
+
+messege.addEventListener('input',(event)=>{
+    let txt = messege.value;
+    if(txt.length > 120)
+     txt = txt.substring(0,120);
+     setTimeout(()=>messege.value = txt,50);
+});
