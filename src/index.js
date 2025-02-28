@@ -1,19 +1,29 @@
-var path = "https://api.whatsapp.com/send?&phone={fone}";
-var phone = "{fone}";
-var msgPlace = "{messege}";
-var msg = "&text={messege}";
-var btn = document.getElementById("btn");
+const path = "https://api.whatsapp.com/send?phone={fone}";
+const phone = "{fone}";
+const msgPlace = "{messege}";
+const msg = "&text={messege}";
+const btn = document.getElementById("btn");
 const btnGen = document.getElementById("btn-gen");
-var messege = document.getElementById("input-msg");
-var num = document.getElementById("num");
-var ddi = document.getElementById("ddi");
-var zoneCode = document.getElementById("ddd");
-var alert = document.getElementById("alert");
+const messege = document.getElementById("input-msg");
+const num = document.getElementById("num");
+const ddi = document.getElementById("ddi");
+const zoneCode = document.getElementById("ddd");
+const alert = document.getElementById("alert");
 const showLink = document.getElementById("show-link");
 
 ddi.value = 55;
-zoneCode.value = 11;
+zoneCode.value = 61;
 messege.value = "";
+num.addEventListener('input',(event)=>{
+  
+  let phoneValue = num.value.replace(/\D/g, '');
+  if(phoneValue.length > 9){
+    phoneValue = phoneValue.slice(0,-1)
+  }
+  if(phoneValue.length > 5)
+    phoneValue = `${phoneValue.slice(0,5)}-${phoneValue.slice(5)}`
+  num.value = phoneValue
+})
 const getPath = () => {
   alert.innerHTML = "";
   let _path = path;
@@ -47,8 +57,13 @@ const getPath = () => {
 };
 btnGen.addEventListener("click", (event) => {
   showLink.innerHTML = "Building....";
+  const link = document.createElement('a')
   const path = getPath();
-  showLink.innerHTML = `Link: ${path}`;
+  link.setAttribute('href',path)
+  link.setAttribute('target',"_blanck")
+  link.innerText = `${path}`
+  showLink.innerText = "Link: "
+  showLink.appendChild(link) 
 });
 btn.addEventListener("click", (event) => {
   const path = getPath();
