@@ -17,7 +17,7 @@ messege.value = "";
 num.addEventListener('input',(event)=>{
   
   let phoneValue = num.value.replace(/\D/g, '');
-  if(phoneValue.length > 9){
+  if(phoneValue.length > 10){
     phoneValue = phoneValue.slice(0,-1)
   }
   if(phoneValue.length > 5)
@@ -31,7 +31,7 @@ const getPath = () => {
   let paisCode = ddi.value;
   let zone = zoneCode.value;
   let textMessge = messege.value;
-  let phoneNumber = num.value;
+  let phoneNumber = num.value.replace(/\D/g, '');
   if (phoneNumber == "") {
     let el = document.createElement("p");
     el.innerText = "fill phone number";
